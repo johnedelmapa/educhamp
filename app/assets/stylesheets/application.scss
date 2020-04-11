@@ -138,6 +138,11 @@ body {
   height: 30px;
 }
 
+.avatar-feed {
+  width: 55px;
+  height: 55px;
+}
+
 .avatar-medium {
   width: 105px;
   height: 105px;
@@ -165,4 +170,13 @@ input[type=file]:before {
 
 input[type=file]::-webkit-file-upload-button {
   visibility: hidden;
+}
+
+.custom-margin{
+  display: flex;
+  align-items: center;
+}
+
+.margin-25 {
+  margin-top: 25px;
 }

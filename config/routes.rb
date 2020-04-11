@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   path_names: {sign_in: 'login', sign_up: 'registration', sign_out: 'logout'},
   controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
   root 'pages#home'
-  resources :users , only: [:show] do
+  resources :users , only: [:index, :show] do
     member do
      get :following, :followers
     end
