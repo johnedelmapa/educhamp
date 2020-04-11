@@ -11,6 +11,7 @@
             <% if signed_in? %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbar-dropdown" href="#" data-toggle="dropdown">
+                        <%= image_tag avatar_url(current_user), class: "rounded-circle avatar-small mr-1" %>
                         <%= current_user.fullname %>
                     </a>
                     <div class="dropdown-menu">

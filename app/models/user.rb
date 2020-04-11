@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable
   validates :fullname, presence: true
+  mount_uploader :image, ImageUploader
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
