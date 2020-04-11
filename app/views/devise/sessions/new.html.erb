@@ -1,0 +1,35 @@
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-6 main-form">
+                <p class="free text-center mb-4"><span>Login</span></p>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                    <div class="form-group">
+                        <%= f.email_field :email, placeholder: " Email", class: "form-control form-design" %>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.password_field :password, placeholder: " Password", class: "form-control form-design" %>
+                    </div>
+
+                    <div class="checkbox-wrapper mb-4">
+                        <% if devise_mapping.rememberable? %>
+                            <div class="form-group d-inline float-left">
+                                <%= f.check_box :remember_me %>
+                                <%= f.label :remember_me %>
+                            </div>
+                        <% end %>
+                        <%= link_to "Forgot your password?", new_password_path(resource_name), class:"d-inline float-right" %>
+                    </div>
+                    
+                    <%= f.submit "Log in", class: "primary-button" %>
+                    <%= link_to "Sign in with Facebook", "#", class: "facebook-button" %>
+                    <small class="terms">Don't have a account?
+                         <%= link_to 'Create new account', new_user_registration_path%>
+                    </small>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
