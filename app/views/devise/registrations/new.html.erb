@@ -18,7 +18,7 @@
                     </div>
                     
                     <%= f.submit "Create an account", class: "primary-button" %>
-                    <%= link_to "Sign in with Facebook", "#", class: "facebook-button" %>
+                    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "facebook-button" %>
                     <small class="terms">By clicking the button, you are agreeing to our
                         <a href="#"> Terms and Services </a>
                     </small>

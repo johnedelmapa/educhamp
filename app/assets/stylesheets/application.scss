@@ -104,6 +104,18 @@ body {
   text-align: center;
 }
 
+.facebook-button:hover {
+  outline: none;
+  border: 1px solid rgb(67, 99, 170);
+  opacity: 0.9;
+  text-decoration: none;
+  color: white;
+}
+
+.facebook-button:active {
+  transform: translateY(2px);
+}
+
 .terms {
   color: hsl(246, 25%, 77%);
   font-size: 10px;

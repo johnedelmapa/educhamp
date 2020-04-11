@@ -7,7 +7,7 @@ default: &default
   host: <%= ENV['DB_HOST'] %>
 development:
   <<: *default
-  database: EduChamp_development
+  database: edu_champ_development
 test:
   <<: *default
-  database: EduChamp_test
+  database: edu_champ_test
