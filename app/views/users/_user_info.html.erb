@@ -5,21 +5,32 @@
         </div>
         <div class="col-4">
             <div class="d-inline-block text-center">
-                <h4>12</h4>
-                <span>following</span>
+                <a href="<%= following_user_path(@user) %>" class="text-secondary text-decoration-none">
+                    <h4><%= @user.followings.count %></h4>
+                    <span>following</span>
+                </a>
             </div>
             <div class="d-inline-block text-center ml-4">
-                <h4>4</h4>
-                <span>followers</span>
-            </div> 
+                <a href="<%= followers_user_path(@user) %>" class="text-secondary text-decoration-none">
+                    <h4><%= @user.followers.count %></h4>
+                    <span>following</span>
+                </a>
+            </div>
         </div>
         <div class="col-3 px-4">
-            <%= link_to 'Follow', "#", class: 'btn btn-outline-primary btn-block' %>
+            <% if current_user != @user %>
+                <div id="follow_form">
+                <% if current_user.following?(@user) %>
+                    <%= render 'unfollow' %>
+                <% else %>
+                    <%= render 'follow' %>
+                <% end %>
+                </div>
+            <% end %>  
         </div>  
         <div class="col-8 offset-4">
             <hr>
         </div>
-
     </div>
 
     <div class="row mb-2"> 
