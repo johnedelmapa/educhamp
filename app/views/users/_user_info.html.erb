@@ -1,0 +1,41 @@
+<div class="container border rounded mb-3 py-3 px-0">
+    <div class="row "> 
+        <div class="col-4 text-center">
+            <%= image_tag avatar_url(@user), class: "rounded-circle avatar-medium" %>
+        </div>
+        <div class="col-4">
+            <div class="d-inline-block text-center">
+                <h4>12</h4>
+                <span>following</span>
+            </div>
+            <div class="d-inline-block text-center ml-4">
+                <h4>4</h4>
+                <span>followers</span>
+            </div> 
+        </div>
+        <div class="col-3 px-4">
+            <%= link_to 'Follow', "#", class: 'btn btn-outline-primary btn-block' %>
+        </div>  
+        <div class="col-8 offset-4">
+            <hr>
+        </div>
+
+    </div>
+
+    <div class="row mb-2"> 
+        <div class="col-4 text-center">
+           <span class="h4">
+                <%= @user.fullname %>
+            </span>
+        </div>
+        <hr>
+        <div class="col-4"> 
+            <%= @user.email %>
+        </div>
+
+        <div class="col-3 px-4">
+            <%= link_to 'Admin', "#", class: 'btn btn-outline-info btn-block' %>
+            <%= link_to "Learned 12 Words", "#", class: 'btn btn-outline-success btn-block' %>
+        </div>
+    </div>
+</div>
