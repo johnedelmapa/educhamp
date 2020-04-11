@@ -15,7 +15,7 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
-25.times do |n|
+30.times do |n|
     users = User.new(
         fullname: Faker::Movies::HarryPotter.character,
         email: "user#{n+1}@email.com",
@@ -24,4 +24,15 @@ user.save!
     )
     users.skip_confirmation!
     users.save!
+end
+
+user = User.first
+followers = User.all
+
+followers[3..30].each do |follower|
+  follower.follow!(user)
+end
+
+followers[10..30].each do |follower|
+  user.follow!(follower)
 end
