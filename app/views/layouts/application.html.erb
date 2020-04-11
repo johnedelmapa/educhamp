@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+    <% unless flash.empty? %>
+    <script type="text/javascript">
+      <% flash.each do |type, message| %>
+          <% type = 'success' if type == 'notice' %>
+          <% type = 'error' if type == 'alert' %>
+          toastr['<%= type %>']('<%= message %>')
+      <% end %>
+        </script>
+    <% end %>
     <%= yield %>
   </body>
 </html>
