@@ -45,7 +45,9 @@
         </div>
 
         <div class="col-3 px-4">
-            <%= link_to 'Admin', "#", class: 'btn btn-outline-info btn-block' %>
+            <% if current_user.is_admin? && current_user == @user %>
+                <%= link_to 'Admin', admin_dashboard_path, class: 'btn btn-outline-info btn-block' %>
+            <% end %>
             <%= link_to "Learned 12 Words", "#", class: 'btn btn-outline-success btn-block' %>
         </div>
     </div>

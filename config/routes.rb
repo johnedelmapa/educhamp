@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'dashboard', to: 'pages#dashboard'
+    resources :users, only: [:index, :update, :destroy]
+  end
   devise_for :users,
   path: '',
   path_names: {sign_in: 'login', sign_up: 'registration', sign_out: 'logout'},
