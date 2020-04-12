@@ -10,7 +10,8 @@ user = User.new(
     fullname: "Johnedel Mapa",
     email: "johnedel.mapa@sun-asterisk.com",
     password: "password",
-    password_confirmation: "password" 
+    password_confirmation: "password" ,
+    is_admin: true
 )
 user.skip_confirmation!
 user.save!
