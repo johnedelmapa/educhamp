@@ -4,7 +4,8 @@
             <li class="active">
                 <%= link_to "Dashboard", admin_dashboard_path, class: "text-decoration-none"%> >
                 <%= link_to "Categories", admin_categories_path, class: "text-decoration-none"%> >
-                <%= link_to "New Category", new_admin_category_path, class: "text-decoration-none"%>
+                <%= link_to @category.title, admin_category_words_path, class: "text-decoration-none"%> >
+                <%= link_to "Edit Word", "#", class: "text-decoration-none"%>
             </li>
         </ol>
     </div>
@@ -26,10 +27,10 @@
         <div class="col-md-9">
              <div class="card">
                 <div class="card-header">
-                    Edit Category
+                    Edit Word
                 </div>
                 <div class="card-body"> 
-                    <%= render 'form', msg: "Update Category"%>       
+                    <%= render 'form', msg: "Update Word"%>       
                 </div>
             </div>
         </div>
