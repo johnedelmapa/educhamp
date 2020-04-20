@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'pages#dashboard'
     resources :users, only: [:index, :update, :destroy]
-    resources :categories
+    resources :categories do
+      resources :words
+    end
   end
   devise_for :users,
   path: '',

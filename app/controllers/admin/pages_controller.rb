@@ -5,6 +5,7 @@ class Admin::PagesController < ApplicationController
 
   def dashboard
     @user_count = User.count
+    @category_count = Category.count
     @users = User.last(5).reverse
   end
 end
