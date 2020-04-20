@@ -4,7 +4,8 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user
 
   def index
-    @users = User.search(params[:search]).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
+    @search = User.ransack(params[:q])
+    @users = @search.result(distinct: true).paginate(page: params[:page], per_page: 10).order(created_at: :desc)
   end
 
   def update

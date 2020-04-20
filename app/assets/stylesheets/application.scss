@@ -204,5 +204,27 @@ input[type=file]::-webkit-file-upload-button {
   border-radius: 4px;
 }
 
+td {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* End Admin CSS */
 
+
+.search-form {
+  width: 300px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid hsl(246, 25%, 77%);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.w-80 {
+  width: 80px;
+}
