@@ -1,0 +1,31 @@
+<main>
+    <div class="text-center mb-4">
+        <h1><%= @category.title %></h1>
+    </div>
+    <div class="container border rounded py-3">
+        <div class="mx-2 my-1">
+            <h5><%= @category.title %></h5>
+        </div>
+        <div class="w-75 mx-auto">
+            <div class="row my-4">
+                <h2 class="col-6 d-flex justify-content-end">
+                    <%= @lesson.next_word.content %>
+                </h2>
+                <h5 class="col-6 pt-2 mt-1">
+                    <%= @lesson.words.count + 1 %> of <%= @category.words.count %>
+                </h5>
+            </div>
+            <div class="row mb-4">
+                <% @lesson.next_word.choices.each do |choice| %>
+                    <div class="d-md-inline-block col-lg-4 my-2">
+                        <%= form_for([@lesson, @answer]) do |f| %>
+                            <%= f.hidden_field :word_id, value: choice.word_id %>
+                            <%= f.hidden_field :choice_id, value: choice.id %>
+                            <%= f.submit choice.content, class: 'btn btn-primary btn-block' %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</main>

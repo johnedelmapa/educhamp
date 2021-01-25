@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_140759) do
+ActiveRecord::Schema.define(version: 2021_01_25_124308) do
+
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "word_id"
+    t.bigint "choice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_id"], name: "index_answers_on_choice_id"
+    t.index ["lesson_id"], name: "index_answers_on_lesson_id"
+    t.index ["word_id"], name: "index_answers_on_word_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -25,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_04_20_140759) do
     t.boolean "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.integer "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_lessons_on_category_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +86,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_140759) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "answers", "choices"
+  add_foreign_key "answers", "lessons"
+  add_foreign_key "answers", "words"
+  add_foreign_key "lessons", "categories"
+  add_foreign_key "lessons", "users"
 end

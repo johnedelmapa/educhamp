@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
+  has_many :lessons, dependent: :destroy
+  has_many :categories, through: :lessons
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
@@ -22,6 +24,10 @@ class User < ApplicationRecord
 
   def unfollow!(other_user)
     following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def lesson_taken(cat_id)
+    lesson = lessons.find_by(category_id: cat_id)
   end
 
   def self.from_omniauth(auth)

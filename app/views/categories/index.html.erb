@@ -4,6 +4,19 @@
         <%#= search_form_for @search do |f| %>
             <%#= f.search_field :title_cont, placeholder: "Search By Title", class: "form-control" %>
         <%# end %>
+         <div class="d-flex justify-content-center my-4">
+            <div class="btn-group row col-10 col-lg-7">
+                <div class="col-4 px-2">
+                    <%= link_to "All", categories_path, class: "btn btn-light btn-block border  #{ 'active' if params[:status] == nil }" %>
+                </div>
+                <div class="col-4 px-2">
+                    <%= link_to "Learned", categories_path(status: "1"), class: "btn btn-light btn-block border #{ 'active' if params[:status] == "1" }" %>
+                </div>
+                <div class="col-4 px-2">
+                    <%= link_to "Not yet", categories_path(status: "0"), class: "btn btn-light btn-block border #{ 'active' if params[:status] == "0" }" %>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <% @categories.each do |category| %>
                 <div class="col-lg-6">
@@ -19,8 +32,17 @@
                         <div class="col-12 p px-4">
                             <%= category.description %>
                         </div>
-                        <div class="col-12 d-flex justify-content-end">        
-                            <%= link_to 'Learn', "#", method: :post, class:'btn btn-outline-success btn-block w-25 absolute' %>                
+                        <div class="col-12 d-flex justify-content-end">
+                            <% lesson = current_user.lesson_taken(category.id) %>
+                            <% if lesson.nil? %>
+                                <%= link_to 'Learn', lessons_path(category_id: category.id), method: :post, class:'btn btn-outline-success btn-block w-25 absolute' %>
+                            <% else %>
+                                <% if lesson.result.nil? %>
+                                     <%= link_to 'Continue', new_lesson_answer_path(lesson), class:'btn btn-warning btn-block w-25 absolute' %>
+                                <% else %>
+                                    <%= link_to 'Result', lesson_path(lesson), class:'btn btn-success btn-block w-25 absolute' %>
+                                <% end %>
+                            <% end %>
                         </div>
                     </div>
                 </div>
