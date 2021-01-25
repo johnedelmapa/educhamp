@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Lessons</h2>
+    <div class="container"> 
+        <%#= search_form_for @search do |f| %>
+            <%#= f.search_field :title_cont, placeholder: "Search By Title", class: "form-control" %>
+        <%# end %>
+        <div class="row">
+            <% @categories.each do |category| %>
+                <div class="col-lg-6">
+                    <div class="row border rounded height-200 px-1 py-3 mx-1 my-3">
+                        <div class="col-12 row pr-0 pb-0">
+                            <div class="col-9 h5 mb-0">
+                                <%= category.title %>
+                            </div>
+                            <div class="col-3 text-right pr-0">
+                                <%= category.words.count %> words
+                            </div>
+                        </div>
+                        <div class="col-12 p px-4">
+                            <%= category.description %>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">        
+                            <%= link_to 'Learn', "#", method: :post, class:'btn btn-outline-success btn-block w-25 absolute' %>                
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="pagination justify-content-center my-3">
+            <%= will_paginate @categories %>
+        </div>    
+    </div>
+</div>
