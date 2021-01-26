@@ -1,5 +1,5 @@
 <main>
-    <div class="text-center">
+    <div class="text-center mt-3">
         <h1><%= @lesson.category.title %></h1>
     </div>
     <div class="text-center">
@@ -38,8 +38,8 @@
                 <% end %>
             </tbody>
         </table>
-        <div class="paginate my-4">
-            <%= will_paginate @answers, :previous_label => '&lt', :next_label => '&gt', inner_window: 2 %>
-        </div>
+        <div class="pagination justify-content-center my-3">
+            <%= will_paginate @answers %>
+        </div> 
     </div>
 </main>

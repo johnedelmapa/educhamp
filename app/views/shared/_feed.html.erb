@@ -1,0 +1,48 @@
+<div class="container mx-auto">
+    <% if @activities.any? %>
+        <div class="row">
+            <% @activities.each do |activity| %>
+                <div class="row col-12 border rounded mx-auto mb-3">
+                    <div class="col-3 mx-auto py-2 px-0">
+                        <%= image_tag avatar_url(activity.user), class: "rounded-circle avatar-feed" %>
+                    </div>
+                    <div class="col-9 align-self-center p-0">
+                        <% if activity.action_type == "Lesson" %>
+                            <% if activity.user == current_user %>
+                                <p>
+                                    <%= link_to 'You', user_path(current_user), class: 'under' %> learned <%= activity.action.result %> of <%= activity.action.words.count %> in <%= link_to activity.action.category.title, lesson_path(activity.action.id), class: 'under' %>
+                                </p>
+                            <% else %>
+                                <p>
+                                    <%= link_to activity.user.fullname, user_path(activity.user), class: 'under' %> learned <%= activity.action.result %> of <%= activity.action.words.count %> in <%= link_to activity.action.category.title, lesson_path(activity.action.id), class: 'under' %>
+                                </p>
+                            <% end %>
+                        <% else %>
+                            <% followed_user = User.find_by(id: activity.action.following_id) %>
+                            <% if activity.user == current_user %>
+                                <p>
+                                    <%= link_to 'You', user_path(activity.user), class: 'under' %> followed <%= link_to followed_user.fullname, user_path(followed_user.id), class: 'under' %>
+                                </p>
+                            <% else %>
+                                <% if followed_user == current_user %>
+                                    <p>
+                                        <%= link_to activity.user.fullname, user_path(activity.user), class: 'under' %> followed <%= link_to 'You', user_path(followed_user.id), class: 'under' %>
+                                    </p>
+                                <% else %>
+                                    <p>
+                                        <%= link_to activity.user.fullname, user_path(activity.user), class: 'under' %> followed <%= link_to followed_user.fullname, user_path(followed_user.id), class: 'under' %>
+                                    </p>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                        <small class="timestamp float-right">
+                            Posted <%= time_ago_in_words(activity.created_at) %> ago.
+                        </small>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% else %>
+        <h3>Nothing to show</h3>
+    <% end %>
+</div>

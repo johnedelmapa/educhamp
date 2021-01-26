@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :lessons, dependent: :destroy
   has_many :categories, through: :lessons
+  has_many :activities, dependent: :destroy
+  has_one :activity, as: :action
+  has_many :answers, through: :lessons
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)

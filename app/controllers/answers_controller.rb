@@ -6,6 +6,7 @@ class AnswersController < ApplicationController
     @category = Category.find_by(id: @lesson.category_id)
 
     if @lesson.next_word.nil?
+      @lesson.create_activity(user: current_user)
       @lesson.update(result: @lesson.lesson_results)
       redirect_to lesson_url(@lesson)
     end
