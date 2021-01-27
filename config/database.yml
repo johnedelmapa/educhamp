@@ -11,3 +11,8 @@ development:
 test:
   <<: *default
   database: edu_champ_test
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
