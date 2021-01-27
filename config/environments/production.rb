@@ -91,13 +91,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
+  config.action_mailer.default_url_options = { host: 'https://educhampapp.herokuapp.com/' }
   # Sendgrid Configurations
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name: Rails.application.credentials.sendgrid[:user_name],
     password: Rails.application.credentials.sendgrid[:password],
-    domain: 'http://localhost:3001',
+    domain: 'https://educhampapp.herokuapp.com/',
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: :plain,
