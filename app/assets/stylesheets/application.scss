@@ -232,3 +232,33 @@ td {
 .rm-padding {
   margin-bottom: 0px !important;
 }
+
+
+.static-first {
+  margin-top: 90px;
+  .under-line {
+    background: linear-gradient(transparent 40%, rgb(255, 255, 190) 50%);
+  }  
+}
+
+.static-second {
+  margin-top: 160px;
+  background-color: rgba(255, 255, 210, 0.8);
+  padding: 6rem 3rem;
+  .under-line-title {
+    background: linear-gradient(transparent 65%, rgba(190, 255, 255, 0.8) 50%);
+  }
+  .w-85 {
+    width: 85%;
+  }
+}
+
+.under {
+  background: linear-gradient(transparent 50%, rgb(255, 255, 160) 50%);
+  text-decoration: none;
+  color: black;
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+}
